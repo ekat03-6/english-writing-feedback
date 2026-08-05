@@ -51,3 +51,25 @@ The system consists of the following workflow:
    * Based on the scores, the system generates personalized practice questions using an LLM.
    * The generated exercises focus on the learner's weakest areas to reinforce long-term retention.
 
+## システム構成
+
+本システムは、以下の流れで学習者を支援する。
+
+1. **AIによる英作文添削**
+
+   * 学習者が英作文を入力する。
+   * LLMが英作文を添削し、修正内容や解説をJSON形式で出力する。
+
+2. **特徴量抽出**
+
+   * JSONデータから、冠詞・時制・前置詞・語彙・文構造などの誤りを抽出する。
+
+3. **スコアリング**
+
+   * 抽出した特徴量をもとに、各項目の理解度や習熟度をスコアとして算出する。
+
+4. **個別最適化された問題生成**
+
+   * スコアに基づいて、LLMが学習者の弱点に応じた練習問題を生成する。
+   * 学習者は反復学習を通じて、添削内容の定着を目指す。
+
