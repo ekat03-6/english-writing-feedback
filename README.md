@@ -137,7 +137,7 @@ The system consists of the following workflow:
 
 
 
- ## Other features 
+ # Other features 
 
 ### Writing Modes
 - Academic
