@@ -23,7 +23,7 @@ The system first analyzes and corrects a learner's English writing using AI. It 
 
 By combining AI feedback with adaptive practice, the project aims to help learners not only understand their mistakes but also retain and apply what they have learned in future writing.
 
-## システム概要
+## 概要
 
 本プロジェクトは、英語学習者向けのAI英作文添削システムである。
 
