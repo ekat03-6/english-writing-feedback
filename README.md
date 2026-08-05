@@ -28,3 +28,26 @@ By combining AI feedback with adaptive practice, the project aims to help learne
 本プロジェクトは、英語学習者向けのAI英作文添削システムである。
 
 従来の添削ツールは誤りを修正することに重点を置いているが、本システムでは添削内容の定着を支援することを目的とする。AIによる添削結果をもとに、学習者が誤りを繰り返し学習できる仕組みを提供し、知識の定着とライティング能力の向上を支援する。
+
+## System Architecture
+
+The system consists of the following workflow:
+
+1. **AI Feedback**
+
+   * The learner submits an English essay.
+   * An LLM analyzes the essay and returns corrections and explanations in JSON format.
+
+2. **Feature Extraction**
+
+   * The JSON output is parsed to extract error features, such as articles, tense, prepositions, word choice, and sentence structure.
+
+3. **Scoring**
+
+   * The extracted features are converted into category-based scores to identify the learner's strengths and weaknesses.
+
+4. **Personalized Practice Generation**
+
+   * Based on the scores, the system generates personalized practice questions using an LLM.
+   * The generated exercises focus on the learner's weakest areas to reinforce long-term retention.
+
