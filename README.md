@@ -134,3 +134,23 @@ The system consists of the following workflow:
 * [ ] 学習履歴の活用
 
   * 学習履歴を蓄積し、スコアの推移や成長を可視化する。
+
+
+
+ ## Other features 
+
+### Writing Modes
+- Academic
+- General
+- Business
+
+### CEFR-Based Learning
+- A1–C2 support
+- Level-based practice
+- Adaptive feedback
+
+### AI-Powered Learning
+- Essay correction
+- Error scoring
+- Personalized practice generation
+- Progress tracking
