@@ -136,21 +136,45 @@ The system consists of the following workflow:
   * 学習履歴を蓄積し、スコアの推移や成長を可視化する。
 
 
-
- # Other features 
+## Other Features
 
 ### Writing Modes
-- Academic
-- General
-- Business
+
+* Academic
+* General
+* Business
 
 ### CEFR-Based Learning
-- A1–C2 support
-- Level-based practice
-- Adaptive feedback
+
+* Support for CEFR levels (A1–C2)
+* Level-appropriate practice exercises
+* Adaptive feedback based on proficiency
 
 ### AI-Powered Learning
-- Essay correction
-- Error scoring
-- Personalized practice generation
-- Progress tracking
+
+* AI-powered essay correction
+* Error analysis and scoring
+* Personalized practice generation
+* Learning progress tracking
+
+
+## その他の機能 
+
+### ライティングモード 
+
+* **Academic**：IELTS・英検などのアカデミックライティング
+* **General**：日常的な英語表現や一般的なライティング
+* **Business**：ビジネスメールや報告書などの実務向けライティング
+
+### CEFRレベル別学習 
+
+* CEFR（A1–C2）に対応
+* レベルに応じた練習問題の提供
+* 習熟度に応じた適応的なフィードバック
+
+### AI学習支援 
+
+* AIによる英作文添削
+* 誤りの分析・スコアリング
+* 個別最適化された練習問題の生成
+* 学習履歴・成長の可視化
