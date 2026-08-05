@@ -73,3 +73,64 @@ The system consists of the following workflow:
    * スコアに基づいて、LLMが学習者の弱点に応じた練習問題を生成する。
    * 学習者は反復学習を通じて、添削内容の定着を目指す。
 
+
+## Development Roadmap
+
+* [ ] Design the JSON schema
+
+  * Design a structured format for AI feedback.
+
+* [ ] Build the feedback acquisition system
+
+  * Develop a system that retrieves essay feedback from an LLM API in JSON format.
+
+* [ ] Collect feedback data
+
+  * Build a dataset for analysis and evaluation.
+
+* [ ] Feature extraction
+
+  * Extract error features such as articles, tense, prepositions, vocabulary, and sentence structure.
+
+* [ ] Develop a scoring method
+
+  * Design and implement a scoring algorithm to quantify learners' strengths and weaknesses.
+
+* [ ] Generate personalized practice exercises
+
+  * Generate practice questions based on each learner's scores using an LLM.
+
+* [ ] Evaluate and improve the system
+
+  * Assess the effectiveness of the system and refine the scoring and question generation methods.
+
+
+## 今後の開発計画
+
+* [ ] JSONレスポンス設計
+
+  * 添削結果を構造化データとして取得できる形式を設計する。
+
+* [ ] 添削データ取得システムの構築
+
+  * LLM APIを利用し、英作文の添削結果をJSON形式で取得する。
+
+* [ ] データ収集
+
+  * 添削データを蓄積し、分析可能なデータセットを構築する。
+
+* [ ] 特徴量分析
+
+  * 添削データから誤りの種類（冠詞・時制・前置詞・語彙など）を抽出し、特徴量として整理する。
+
+* [ ] スコアリング手法の開発
+
+  * 特徴量をもとに学習者の弱点を定量化するアルゴリズムを設計・実装する。
+
+* [ ] 個別最適化問題生成
+
+  * スコアに応じてLLMが学習者ごとの練習問題を生成する。
+
+* [ ] 学習履歴の活用
+
+  * 学習履歴を蓄積し、スコアの推移や成長を可視化する。
