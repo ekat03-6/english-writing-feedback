@@ -1,0 +1,34 @@
+body{
+    background-color: white;
+}
+
+.container{
+    width: 900px;
+    margin: 0 auto;
+}
+
+#topic{
+    width: 600px;
+    height:50px;
+    padding: 10px;
+    border: 2px solid gray;
+}
+
+#essay{
+    width: 600px;
+    height:300px;
+    padding: 10px;
+    border: 2px solid gray;
+}
+
+#submit{
+    width:120px;
+    height:40px;
+
+    background-color: blue;
+    color: white;
+
+    border-radius:10px;
+    display: block;
+    margin-top: 20px;
+}
