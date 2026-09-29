@@ -21,6 +21,13 @@ body{
     border: 2px solid gray;
 }
 
+#api{
+    width: 600px;
+    height: 40px;
+    padding: 10px;
+    border: 2px solid gray;
+}
+
 #submit{
     width:120px;
     height:40px;
@@ -31,4 +38,16 @@ body{
     border-radius:10px;
     display: block;
     margin-top: 20px;
+}
+
+#target {
+    width: 70px;
+    height: 36px;
+    padding: 0 8px;
+    border: 1px solid #d0d5dd;
+    border-radius: 8px;
+    background: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
 }
