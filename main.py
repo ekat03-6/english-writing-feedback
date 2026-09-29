@@ -1,12 +1,19 @@
-from fastapi import FastAPI, Form
+from fastapi import FastAPI
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
+from pydantic import BaseModel
 
 from google import genai
 import json
-import os
 
 app = FastAPI()
+
+class WritingRequest(BaseModel):
+    topic: str
+    essay: str
+    api_key: str
+    cefr: str
+
 
 app.mount(
     "/static",
@@ -14,9 +21,6 @@ app.mount(
     name="static"
 )
 
-client = genai.Client(
-    api_key="API-Key"
-)
 
 
 @app.get("/")
@@ -25,46 +29,106 @@ def home():
 
 
 @app.post("/submit")
-def submit(essay: str = Form(...)):
+def submit(request: WritingRequest):
+
+    client = genai.Client(
+        api_key=request.api_key
+    )
 
     prompt = f"""
 You are an English writing evaluator and correction assistant.
 
-Analyze the student's English essay.
+The student's target CEFR level is {request.cefr}.
 
-Return the result as valid JSON only.
+Evaluate the student's English writing relative to the target CEFR level.
 
-The JSON must have exactly this structure:
+Topic:
+{request.topic}
+
+Essay:
+{request.essay}
+
+Return valid JSON only with exactly this structure:
 
 {{
   "essay": "The student's original essay",
-  "score": 0,
-  "corrected_essay": "A fully corrected version",
-  "errors": [
-    {{
-      "category": "grammar",
-      "subcategory": "tense",
-      "original": "incorrect expression",
-      "corrected": "correct expression",
-      "explanation": "Explanation of the error."
+  "language": {{
+    "score": 0,
+    "corrected_essay": "Fully corrected version",
+    "feedback": "Overall language feedback",
+    "changes": [
+      {{
+        "category": "grammar",
+        "subcategory": "specific type",
+        "before": "original",
+        "after": "corrected",
+        "explanation": "Explanation"
+      }}
+    ]
+  }},
+  "writing": {{
+    "overall_score": 0,
+    "task": {{
+      "score": 0,
+      "feedback": "Task relevance"
+    }},
+    "structure": {{
+      "score": 0,
+      "components": [],
+      "issues": []
+    }},
+    "logic": {{
+      "score": 0,
+      "relations": [],
+      "issues": []
+    }},
+    "coherence": {{
+      "score": 0,
+      "feedback": "Coherence feedback",
+      "issues": []
+    }},
+    "development": {{
+      "score": 0,
+      "feedback": "Development feedback",
+      "issues": []
     }}
-  ]
+  }}
 }}
 
-Rules:
+Language Analysis:
+- Identify meaningful grammar errors and unnatural expressions.
+- Include useful word-choice and sentence-construction corrections.
+- Preserve the student's original meaning.
+- Do not treat every stylistic difference as an error.
+- Do not make unnecessary corrections.
+- "category" must be either "grammar" or "unnatural".
+- If there are no meaningful language errors, return an empty "changes" array.
 
-- Keep the original essay unchanged in "essay".
-- Give a score from 0 to 100.
-- Correct the entire essay in "corrected_essay".
-- Identify meaningful errors.
-- Do not invent errors.
+Writing Analysis:
+- Evaluate task relevance, structure, logic, coherence, and development.
+- Identify claims, reasons, examples, explanations, and conclusions when present.
+- Identify logical relationships between ideas.
+- For logic strength, use only "strong", "moderate", or "weak".
+- Do not judge whether the student's opinion is correct.
+- Do not invent information.
+- Do not force components that are not present.
+- Evaluate performance relative to the target CEFR level.
+
+Scoring:
+- All scores must be integers from 0 to 4.
+- 0 = very weak or not demonstrated.
+- 1 = limited.
+- 2 = developing.
+- 3 = adequate.
+- 4 = strong.
+
+Output Requirements:
 - Return JSON only.
-- Do not use Markdown.
+- Do not include Markdown.
 - Do not include ```json.
-
-Student essay:
-
-{essay}
+- Do not include explanations outside the JSON.
+- Follow the exact JSON structure provided above.
+- Ensure the returned content is valid JSON.
 """
 
     response = client.models.generate_content(
