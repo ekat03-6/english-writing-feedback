@@ -6,7 +6,7 @@
 
     <body>
     <div class = "container">
-        <form action = "/submit" method = "post">
+        <form onsubmit="submitEssay(event)">
 
             <h1>英作文添削</h1>
 
@@ -15,11 +15,27 @@
 
             <h2>エッセイ入力</h2>
             <textarea id = "essay" name = "essay"></textarea>
+
+            <h3>ターゲットレベル</h3>
+            <select id = "target" name = "target">
+                <option value = "A1">A1</option>
+                <option value = "A2">A2</option>
+                <option value = "B1">B1</option>
+                <option value = "B2">B2</option>
+                <option value = "C1">C1</option>
+                <option value = "C2">C2</option>
+            </select>
+       
+
+            <h4>Gemini APIキー入力</h4>
+            <input type="password" id="api" name="api_key">
+
             <button id = "submit" type = "submit">
                 Submit
             </button>
-            <script src="/static/script.js"></script>
         </form>
+            
+            <script src="/static/script.js"></script>
     </div>
     </body>
 </html>
